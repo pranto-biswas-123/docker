@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    healthcheck: 
+      test: ["CMD", "curl", "-f", "http://localhost:5000"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    ports:
+      - "5000:5000"
+    restart: always
+    environment:
+      BACKGROUND_COLOR: "blue"
