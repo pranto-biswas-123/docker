@@ -1,0 +1,31 @@
+# creating network
+ d network create \  
+ --subnet=172.26.0.0/16 \   
+ --gateway=172.26.0.1 \   
+ --driver=bridge \   
+ php-app-network
+
+
+# creating containers
+d run -d \ 
+--name container1 \  
+--network=php-app-network \  
+--ip=172.26.0.2 \ 
+-p 1001:80 \
+php-app
+
+d run -d \ 
+--name container2 \  
+--network=php-app-network \  
+--ip=172.26.0.3 \ 
+-p 1002:80 \
+php-app
+
+d run -d \ 
+--name container3 \  
+--network=php-app-network \  
+--ip=172.26.0.4 \ 
+-p 1003:80 \
+php-app
+
+
